@@ -1,33 +1,33 @@
 import { Button, Collapse } from 'antd';
-import React, { useMemo , useEffect, useState } from 'react';
+import _ from 'lodash';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react/cjs/react.development';
 import { AppContext } from '../../context/AppProvider';
-import { db } from '../../firebase/config';
-import { useFireStore } from '../../hooks/useFirestore';
+
 
 const { Panel } = Collapse;
 
 const Listroom = () => {
-    
+
 
     const { rooms, setSelectedRoomID } = useContext(AppContext)
-    
+
     const handleSelectRoom = (id) => {
         setSelectedRoomID(id)
     }
 
     const renderRooms = () => {
-        return rooms.map((room , index) => {
+        const orderListRoom = _.orderBy(rooms, "createAt", "asc");
+        return orderListRoom.map((room, index) => {
             return <NavLink
                 key={index}
-                to ="/chat-room"
+                to="/chat"
                 activeClassName="selected"
-                onClick={() => handleSelectRoom (room.id)}
-                    >
-                <p >{ room.name}</p>
-                </NavLink>
-            
+                onClick={() => handleSelectRoom(room.id)}
+            >
+                <p >{room.name}</p>
+            </NavLink>
         })
     }
 
@@ -38,7 +38,7 @@ const Listroom = () => {
                     {renderRooms()}
                 </Panel>
             </Collapse>
-            
+
         </div>
     );
 }

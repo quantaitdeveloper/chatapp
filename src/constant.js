@@ -1,0 +1,1 @@
+export const URL_CONFIG = "https://607e8b3402a23c0017e8b875.mockapi.io/users";

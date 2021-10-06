@@ -6,21 +6,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Chatroom from './components/Chat room/ChatRoom';
+import Chatroom from './components/Chatroom/ChatRoom';
 import AppProvider from './context/AppProvider';
-import AddRoomModal from './Modals/AddRoomModal';
-import InviteMember from './Modals/InviteMember';
 
 function App() {
   return <Router>
-      <AppProvider>
+    <AppProvider>
       <Switch>
-        <Route component={Login} path="/login" />
-        <Route component={Chatroom} path="/chat-room" />
+        <Route component={Chatroom} path="/chat" />
         <Route component={Login} path="/" />
-          </Switch>
-          <AddRoomModal />
-          <InviteMember />
+      </Switch>
     </AppProvider>
   </Router>
 }
