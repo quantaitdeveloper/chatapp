@@ -9,7 +9,7 @@ import {
 import Chatroom from './components/Chatroom/ChatRoom';
 import AppProvider from './context/AppProvider';
 
-function App() {
+const App = () => {
   return <Router>
     <AppProvider>
       <Switch>
